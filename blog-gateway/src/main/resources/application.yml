@@ -1,0 +1,34 @@
+server:
+  port: 8881
+spring:
+  application:
+    name: blog-gateway
+  cloud:
+    nacos:
+      discovery:
+        # 配置Nacos注册中心地址
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+    gateway:
+      discovery:
+        locator:
+          # gateway 可以从 nacos 发现微服务
+          enabled: true
+      routes:
+        - id: blog-web
+          uri: lb://blog-web #路由的目标地址 lb就是负载均衡，后面跟服务名称
+          #          uri: http://localhost:8882/blog-web
+          predicates: # 路由断言，也就是判断请求是否符合路由规则的条件
+            #            - Query=url,user      # url 带有/blog-web 就去上方uri地址 例：url=blog-web
+            - Path=/web/**      # url 这个是按照路径匹配，只要以/coupon开头就符合要求
+            #- After=2037-01-20T17:42:47.789-07:00[Asia/Shanghai]  # 这个时间之后可以访问
+
+
+
+
+
+
+
+
+
