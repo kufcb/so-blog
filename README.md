@@ -5,4 +5,4 @@
 3. springcloud
 4. mybaits-flex
 5. springsecurity
-6. 
+6. oautho2实现单点验证

@@ -1,20 +1,23 @@
 package com.commons.response;
 
+import com.google.gson.Gson;
+
 public class ResponseResult<T> {
     private Integer status;
     private String message;
     private T data;
 
-    public static <T> ResponseResult<T> success() {
+    public static <T> String success() {
         return success(null);
     }
 
-    public static <T> ResponseResult<T> success(T data) {
+    public static <T> String success(T data) {
         ResponseResult responseResult = new ResponseResult();
         responseResult.setStatus(ResponseStatus.SUCCESS.getResponseCode());
         responseResult.setData(data);
         responseResult.setMessage(ResponseStatus.SUCCESS.getDescription());
-        return responseResult;
+        Gson gson = new Gson();
+        return gson.toJson(responseResult);
     }
 
     public Integer getStatus() {

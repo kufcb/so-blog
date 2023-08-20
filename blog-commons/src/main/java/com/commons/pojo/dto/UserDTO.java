@@ -1,4 +1,4 @@
-package org.somall.pojo.dto;
+package com.commons.pojo.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 
